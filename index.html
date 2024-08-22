@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusFlow: ADHD Task Assistant</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
+        .container { max-width: 600px; margin: auto; }
+        input[type="text"] { width: 100%; padding: 10px; margin-bottom: 10px; }
+        button { padding: 10px 15px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        #result { margin-top: 20px; white-space: pre-wrap; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>FocusFlow: ADHD Task Assistant</h1>
+        <form method="POST">
+            <input type="text" name="task" placeholder="Enter your task" required>
+            <button type="submit">Break Down Task</button>
+        </form>
+        {% if task %}
+        <div id="result">
+            <h2>Breakdown for: {{ task }}</h2>
+            {% if error %}
+            <p class="error">{{ error }}</p>
+            {% else %}
+            <pre>{{ breakdown }}</pre>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
